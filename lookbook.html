@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lookbook 2025 — Benny K Fine Jewelry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #09090A; color: #F0EAE0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #A8A8A0; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes menuSlideIn { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
+
+#nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:28px 64px; background:rgba(9,9,10,0.97); border-bottom:1px solid rgba(168,168,160,0.1); }
+.nav-links { display:flex; gap:44px; align-items:center; }
+.nav-links a { font-size:10px; letter-spacing:.4em; text-transform:uppercase; font-weight:400; transition:color .3s; }
+.nav-links a:hover { color:#A8A8A0; }
+.nav-logo { position:absolute; left:50%; transform:translateX(-50%); }
+.nav-logo img { height:48px; width:auto; object-fit:contain; }
+.lang-toggle { display:flex; gap:7px; align-items:center; }
+.lang-toggle button { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.3em; text-transform:uppercase; background:none; border:none; cursor:pointer; padding:4px 0; transition:color .3s; }
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:210; }
+.hamburger span { display:block; width:22px; height:1px; background:#F0EAE0; transition:all .3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+#mobile-menu { display:none; position:fixed; inset:0; z-index:190; background:rgba(9,9,10,.98); flex-direction:column; align-items:center; justify-content:center; gap:44px; }
+#mobile-menu.open { display:flex; animation:menuSlideIn .35s ease; }
+#mobile-menu a { font-size:11px; letter-spacing:.55em; text-transform:uppercase; color:#F0EAE0; font-weight:300; }
+#mobile-menu a:hover { color:#A8A8A0; }
+
+.lb-hero { padding:160px 64px 80px; text-align:center; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) both; }
+.lb-hero .eyebrow { font-size:9px; letter-spacing:.65em; text-transform:uppercase; color:#A8A8A0; font-weight:300; margin-bottom:28px; }
+.lb-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(48px,8vw,100px); font-weight:300; letter-spacing:.12em; color:#F0EAE0; line-height:1; }
+.divider { display:flex; align-items:center; justify-content:center; margin:32px auto; width:fit-content; }
+.divider .line { width:44px; height:1px; background:rgba(168,168,160,.35); }
+.divider .diamond { width:5px; height:5px; border:1px solid rgba(168,168,160,.35); transform:rotate(45deg); margin:0 14px; flex-shrink:0; }
+.lb-hero .subtitle { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,22px); font-style:italic; font-weight:300; color:rgba(240,234,224,.6); letter-spacing:.04em; }
+
+.gallery-wrap { padding:0 48px 80px; max-width:1440px; margin:0 auto; }
+.masonry { columns:3; column-gap:16px; }
+.masonry-item { break-inside:avoid; margin-bottom:16px; overflow:hidden; cursor:pointer; background:#111; }
+.masonry-item img { width:100%; height:auto; display:block; transition:transform .6s ease, opacity .4s ease; opacity:0; }
+.masonry-item img.loaded { opacity:1; }
+.masonry-item:hover img { transform:scale(1.03); }
+
+.load-more-wrap { text-align:center; padding:20px 0 100px; }
+.load-more-btn { padding:18px 64px; background:transparent; border:1px solid rgba(168,168,160,.35); font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.55em; text-transform:uppercase; color:#A8A8A0; cursor:pointer; transition:all .35s; }
+.load-more-btn:hover { border-color:#A8A8A0; background:rgba(168,168,160,.06); }
+.load-more-btn:disabled { opacity:.3; cursor:default; }
+.photo-count { font-size:9px; letter-spacing:.2em; color:rgba(168,168,160,.35); margin-top:20px; }
+
+#lightbox { display:none; position:fixed; inset:0; z-index:300; background:rgba(9,9,10,.97); align-items:center; justify-content:center; }
+#lightbox.open { display:flex; animation:fadeIn .25s ease; }
+#lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; }
+.lb-close { position:absolute; top:32px; right:40px; background:none; border:none; cursor:pointer; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.4em; text-transform:uppercase; color:rgba(240,234,224,.5); transition:color .3s; }
+.lb-close:hover { color:#F0EAE0; }
+.lb-arrow { position:absolute; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; padding:20px 28px; color:rgba(240,234,224,.35); font-size:20px; transition:color .3s; }
+.lb-arrow:hover { color:#F0EAE0; }
+.lb-arrow.prev { left:0; }
+.lb-arrow.next { right:0; }
+.lb-counter { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); font-size:9px; letter-spacing:.3em; color:rgba(240,234,224,.3); }
+
+footer { background:#09090A; border-top:1px solid rgba(168,168,160,.1); padding:68px 64px 44px; }
+.footer-inner { max-width:1240px; margin:0 auto; display:flex; flex-direction:column; align-items:center; }
+.footer-logo img { height:44px; width:auto; object-fit:contain; }
+.footer-tagline { font-size:9px; letter-spacing:.42em; text-transform:uppercase; color:rgba(168,168,160,.55); font-weight:300; margin-top:10px; margin-bottom:44px; }
+.footer-links { display:flex; gap:48px; margin-bottom:44px; }
+.footer-links a { font-size:9px; letter-spacing:.38em; text-transform:uppercase; color:rgba(240,234,224,.45); font-weight:300; transition:color .3s; }
+.footer-links a:hover { color:#A8A8A0; }
+.footer-sep { width:100%; height:1px; background:rgba(168,168,160,.08); margin-bottom:32px; }
+.footer-copy { font-size:9px; letter-spacing:.1em; color:rgba(240,234,224,.28); font-weight:300; }
+
+@media (max-width:900px) { .masonry { columns:2; } }
+@media (max-width:768px) {
+  #nav { padding:20px 24px; }
+  .nav-links { display:none; }
+  .nav-logo img { height:36px; }
+  .hamburger { display:flex; }
+  .lb-hero { padding:120px 24px 60px; }
+  .gallery-wrap { padding:0 12px 60px; }
+  .masonry { column-gap:10px; }
+  .masonry-item { margin-bottom:10px; }
+  footer { padding:60px 24px 40px; }
+  .footer-links { flex-wrap:wrap; gap:24px; justify-content:center; }
+}
+@media (max-width:480px) { .masonry { columns:1; } }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-links">
+    <a href="index.html#colecoes">Coleções</a>
+    <a href="lookbook.html" style="color:#A8A8A0;">Lookbook</a>
+  </div>
+  <div class="nav-logo"><a href="index.html"><img src="uploads/46-Marca-BK-Jwerlry.webp" alt="Benny K"></a></div>
+  <div class="nav-links">
+    <a href="index.html#sobre">Sobre</a>
+    <a href="index.html#contato">Contato</a>
+    <div class="lang-toggle">
+      <button id="btn-pt" onclick="setLang('pt')" style="color:#A8A8A0;font-weight:500;">PT</button>
+      <span style="font-size:9px;color:rgba(240,234,224,.18);">|</span>
+      <button id="btn-en" onclick="setLang('en')" style="color:rgba(240,234,224,.4);font-weight:300;">EN</button>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="mobile-menu">
+  <a href="index.html#colecoes" onclick="closeMenu()">Coleções</a>
+  <a href="lookbook.html" onclick="closeMenu()">Lookbook</a>
+  <a href="index.html#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="index.html#contato" onclick="closeMenu()">Contato</a>
+</div>
+
+<div class="lb-hero">
+  <p class="eyebrow">Benny K — 2025</p>
+  <h1 id="lb-title">Lookbook</h1>
+  <div class="divider"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+  <p class="subtitle" id="lb-sub">Uma visão extraordinária</p>
+</div>
+
+<div class="gallery-wrap">
+  <div class="masonry" id="masonry"></div>
+  <div class="load-more-wrap">
+    <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">Carregar mais</button>
+    <p class="photo-count" id="photo-count"></p>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">Fechar &times;</button>
+  <button class="lb-arrow prev" onclick="lightboxNav(-1)">&#8592;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-arrow next" onclick="lightboxNav(1)">&#8594;</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo"><img src="uploads/46-Marca-BK-Jwerlry.webp" alt="Benny K"></a>
+    <p class="footer-tagline">Fine Jewelry Design</p>
+    <div class="footer-links">
+      <a href="index.html#colecoes">Coleções</a>
+      <a href="lookbook.html">Lookbook</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+    <div class="footer-sep"></div>
+    <p class="footer-copy">© 2025 Benny K. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+var PHOTOS = ["Benny_K_pecas_0P9A3085.jpg","Benny_K_pecas_0P9A3081.jpg","Benny_K_pecas_IMG_0094.jpg","Benny_K_pecas_IMG_0093.jpg","Benny_K_pecas_IMG_0090.jpg","Benny_K_pecas_IMG_0082.jpg","Benny_K_pecas_IMG_0063.jpg","Benny_K_pecas_IMG_0060.jpg","Benny_K_pecas_IMG_0045.jpg","Benny_K_pecas_IMG_0032.jpg","Benny_K_pecas_IMG_0029.jpg","Benny_K_pecas_IMG_0019.jpg","Benny_K_pecas_IMG_0013.jpg","Benny_K_pecas_0P9A3247.jpg","Benny_K_pecas_0P9A3246.jpg","Benny_K_pecas_0P9A3244.jpg","Benny_K_pecas_0P9A3229.jpg","Benny_K_pecas_0P9A3228.jpg","Benny_K_pecas_0P9A3221.jpg","Benny_K_pecas_0P9A3220.jpg","Benny_K_pecas_0P9A3219.jpg","Benny_K_pecas_0P9A3211.jpg","Benny_K_pecas_0P9A3209.jpg","Benny_K_pecas_0P9A3207.jpg","Benny_K_pecas_0P9A3205.jpg","Benny_K_pecas_0P9A3203.jpg","Benny_K_pecas_0P9A3202.jpg","Benny_K_pecas_0P9A3191.jpg","Benny_K_pecas_0P9A3179.jpg","Benny_K_pecas_0P9A3178.jpg","Benny_K_pecas_0P9A3176.jpg","Benny_K_pecas_0P9A3175.jpg","Benny_K_pecas_0P9A3173.jpg","Benny_K_pecas_0P9A3172.jpg","Benny_K_pecas_0P9A3167.jpg","Benny_K_pecas_0P9A3160.jpg","Benny_K_pecas_0P9A3150.jpg","Benny_K_pecas_0P9A3140.jpg","Benny_K_pecas_0P9A3124.jpg","Benny_K_pecas_0P9A3123.jpg","Benny_K_pecas_0P9A3122.jpg","Benny_K_pecas_0P9A3121.jpg","Benny_K_pecas_0P9A3118.jpg","Benny_K_pecas_0P9A3117.jpg","Benny_K_pecas_0P9A3108.jpg","Benny_K_pecas_0P9A3107.jpg","Benny_K_pecas_0P9A3101.jpg","Benny_K_pecas_0P9A3100.jpg","Benny_K_pecas_0P9A3099.jpg","Benny_K_pecas_0P9A3098.jpg","Benny_K_pecas_0P9A3097.jpg","Benny_K_pecas_0P9A3092.jpg","Benny_K_pecas_0P9A3089.jpg","Benny_K_pecas_0P9A3087.jpg","Benny_K_pecas_IMG_8693.jpg","Benny_K_pecas_IMG_8688.jpg","Benny_K_pecas_IMG_8687.jpg","Benny_K_pecas_IMG_8684.jpg","Benny_K_pecas_IMG_8677.jpg","Benny_K_pecas_IMG_8676.jpg","Benny_K_pecas_IMG_8675.jpg","Benny_K_pecas_IMG_8673.jpg","Benny_K_pecas_IMG_8664.jpg","Benny_K_pecas_IMG_8661.jpg","Benny_K_pecas_IMG_8658.jpg","Benny_K_pecas_IMG_8657.jpg","Benny_K_pecas_IMG_8653.jpg","Benny_K_pecas_IMG_8652.jpg","Benny_K_pecas_IMG_8651.jpg","Benny_K_pecas_IMG_8638.jpg","Benny_K_pecas_IMG_8637.jpg","Benny_K_pecas_IMG_8633.jpg","Benny_K_pecas_IMG_8629.jpg","Benny_K_pecas_IMG_8621.jpg","Benny_K_pecas_IMG_8620.jpg","Benny_K_pecas_IMG_8618.jpg","Benny_K_pecas_IMG_8617.jpg","Benny_K_pecas_IMG_8610.jpg","Benny_K_pecas_IMG_8609.jpg","Benny_K_pecas_IMG_8608.jpg","Benny_K_pecas_IMG_8607.jpg","Benny_K_pecas_IMG_8605.jpg","Benny_K_pecas_IMG_8604.jpg","Benny_K_pecas_IMG_8601.jpg","Benny_K_pecas_IMG_7711.jpg","Benny_K_pecas_IMG_7707.jpg","Benny_K_pecas_IMG_7698.jpg","Benny_K_pecas_IMG_7695.jpg","Benny_K_pecas_IMG_7693.jpg","Benny_K_pecas_IMG_7691.jpg","Benny_K_pecas_IMG_7689.jpg","Benny_K_pecas_IMG_7686.jpg","Benny_K_pecas_IMG_7683.jpg","Benny_K_pecas_IMG_7681.jpg","Benny_K_pecas_IMG_7593.jpg","Benny_K_pecas_IMG_0173.jpg","Benny_K_pecas_IMG_0172.jpg","Benny_K_pecas_IMG_0170.jpg","Benny_K_pecas_IMG_0169.jpg","Benny_K_pecas_IMG_0155.jpg","Benny_K_pecas_IMG_0152.jpg","Benny_K_pecas_IMG_0144.jpg","Benny_K_pecas_IMG_0112.jpg","Benny_K_pecas_IMG_0104.jpg","Benny_K_pecas_IMG_0096.jpg","Benny_K_pecas_IMG_0095.jpg"];
+var PAGE_SIZE = 24;
+var loaded = 0;
+var lightboxIndex = 0;
+var visiblePhotos = [];
+
+function loadMore() {
+  var masonry = document.getElementById('masonry');
+  var end = Math.min(loaded + PAGE_SIZE, PHOTOS.length);
+  for (var i = loaded; i < end; i++) {
+    var item = document.createElement('div');
+    item.className = 'masonry-item';
+    item.dataset.index = i;
+    var img = document.createElement('img');
+    img.src = 'uploads/' + PHOTOS[i];
+    img.alt = 'Benny K';
+    img.loading = 'lazy';
+    img.onload = function() { this.classList.add('loaded'); };
+    img.onerror = function() { this.parentElement.style.display = 'none'; };
+    (function(idx) {
+      item.addEventListener('click', function() { openLightbox(idx); });
+    })(i);
+    item.appendChild(img);
+    masonry.appendChild(item);
+    visiblePhotos.push(img);
+  }
+  loaded = end;
+  updateUI();
+}
+
+function updateUI() {
+  var btn = document.getElementById('load-more-btn');
+  var count = document.getElementById('photo-count');
+  count.textContent = loaded + ' de ' + PHOTOS.length + ' fotos';
+  if (loaded >= PHOTOS.length) {
+    btn.disabled = true;
+    btn.textContent = 'Todas as fotos carregadas';
+  }
+}
+
+function openLightbox(idx) {
+  lightboxIndex = idx;
+  document.getElementById('lb-img').src = 'uploads/' + PHOTOS[idx];
+  document.getElementById('lb-counter').textContent = (idx + 1) + ' / ' + PHOTOS.length;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lightboxNav(dir) {
+  lightboxIndex = (lightboxIndex + dir + PHOTOS.length) % PHOTOS.length;
+  // Auto-load more if navigating beyond loaded
+  if (lightboxIndex >= loaded) loadMore();
+  document.getElementById('lb-img').src = 'uploads/' + PHOTOS[lightboxIndex];
+  document.getElementById('lb-counter').textContent = (lightboxIndex + 1) + ' / ' + PHOTOS.length;
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lightboxNav(-1);
+  if (e.key === 'ArrowRight') lightboxNav(1);
+});
+
+function toggleMenu() {
+  var menu = document.getElementById('mobile-menu');
+  var ham = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+function setLang(lang) {
+  var gold = '#A8A8A0', dim = 'rgba(240,234,224,.4)';
+  ['pt','en'].forEach(function(l) {
+    var btn = document.getElementById('btn-' + l);
+    btn.style.color = l === lang ? gold : dim;
+    btn.style.fontWeight = l === lang ? '500' : '300';
+  });
+  document.getElementById('lb-title').textContent = 'Lookbook';
+  document.getElementById('lb-sub').textContent = lang === 'pt' ? 'Uma visão extraordinária' : 'An extraordinary vision';
+}
+
+// Init
+loadMore();
+</script>
+</body>
+</html>
