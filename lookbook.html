@@ -96,6 +96,8 @@ footer { background:#09090A; border-top:1px solid rgba(168,168,160,.1); padding:
 }
 @media (max-width:480px) { .masonry { columns:1; } }
 .lb-caption { position:absolute; bottom:76px; left:0; right:0; text-align:center; padding:0 60px; color:rgba(255,255,255,.78); font-size:13px; letter-spacing:.06em; line-height:1.6; font-weight:300; max-width:720px; margin:0 auto; }
+.grid-caption { margin:14px 0 0; font-size:11.5px; letter-spacing:.09em; line-height:1.65; color:rgba(255,255,255,.5); font-weight:300; text-transform:none; }
+.grid-caption:empty { display:none; }
 </style>
 </head>
 <body>
@@ -190,6 +192,11 @@ function loadMore() {
       item.addEventListener('click', function() { openLightbox(idx); });
     })(i);
     item.appendChild(img);
+    var cap = document.createElement('p');
+    cap.className = 'grid-caption';
+    cap.dataset.file = PHOTOS[i];
+    cap.textContent = DESCRICOES[PHOTOS[i]] || '';
+    item.appendChild(cap);
     masonry.appendChild(item);
     visiblePhotos.push(img);
   }
@@ -296,6 +303,10 @@ function loadDescricoes() {
       var file = (rows[i][0] || '').trim();
       var desc = (rows[i][1] || '').trim();
       if (file) DESCRICOES[file] = desc;
+    }
+    var caps = document.querySelectorAll('.grid-caption');
+    for (var j = 0; j < caps.length; j++) {
+      caps[j].textContent = DESCRICOES[caps[j].dataset.file] || '';
     }
     var lb = document.getElementById('lightbox');
     if (lb && lb.classList.contains('open')) setCaption(lightboxIndex);
