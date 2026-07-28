@@ -297,7 +297,7 @@ function parseCSV(text) {
 
 function loadDescricoes() {
   if (!CSV_URL) return;
-  fetch(CSV_URL).then(function(r){ return r.text(); }).then(function(txt){
+  fetch(CSV_URL + '&_=' + Date.now(), { cache: 'no-store' }).then(function(r){ return r.text(); }).then(function(txt){
     var rows = parseCSV(txt);
     for (var i = 1; i < rows.length; i++) {
       var file = (rows[i][0] || '').trim();
