@@ -92,6 +92,7 @@ footer { background:#09090A; border-top:1px solid rgba(168,168,160,.1); padding:
   .footer-links { flex-wrap:wrap; gap:24px; justify-content:center; }
 }
 @media (max-width:480px) { .masonry { columns:1; } }
+.lb-caption { position:absolute; bottom:76px; left:0; right:0; text-align:center; padding:0 60px; color:rgba(255,255,255,.78); font-size:13px; letter-spacing:.06em; line-height:1.6; font-weight:300; max-width:720px; margin:0 auto; }
 </style>
 </head>
 <body>
@@ -141,6 +142,7 @@ footer { background:#09090A; border-top:1px solid rgba(168,168,160,.1); padding:
   <button class="lb-arrow prev" onclick="lightboxNav(-1)">&#8592;</button>
   <img id="lb-img" src="" alt="">
   <button class="lb-arrow next" onclick="lightboxNav(1)">&#8594;</button>
+  <div class="lb-caption" id="lb-caption"></div>
   <div class="lb-counter" id="lb-counter"></div>
 </div>
 
@@ -160,8 +162,10 @@ footer { background:#09090A; border-top:1px solid rgba(168,168,160,.1); padding:
 </footer>
 
 <script>
-var PHOTOS = ["Benny_K_pecas_0P9A3085.jpg","Benny_K_pecas_0P9A3081.jpg","Benny_K_pecas_IMG_0094.jpg","Benny_K_pecas_IMG_0093.jpg","Benny_K_pecas_IMG_0090.jpg","Benny_K_pecas_IMG_0082.jpg","Benny_K_pecas_IMG_0063.jpg","Benny_K_pecas_IMG_0060.jpg","Benny_K_pecas_IMG_0045.jpg","Benny_K_pecas_IMG_0032.jpg","Benny_K_pecas_IMG_0029.jpg","Benny_K_pecas_IMG_0019.jpg","Benny_K_pecas_IMG_0013.jpg","Benny_K_pecas_0P9A3247.jpg","Benny_K_pecas_0P9A3246.jpg","Benny_K_pecas_0P9A3244.jpg","Benny_K_pecas_0P9A3229.jpg","Benny_K_pecas_0P9A3228.jpg","Benny_K_pecas_0P9A3221.jpg","Benny_K_pecas_0P9A3220.jpg","Benny_K_pecas_0P9A3219.jpg","Benny_K_pecas_0P9A3211.jpg","Benny_K_pecas_0P9A3209.jpg","Benny_K_pecas_0P9A3207.jpg","Benny_K_pecas_0P9A3205.jpg","Benny_K_pecas_0P9A3203.jpg","Benny_K_pecas_0P9A3202.jpg","Benny_K_pecas_0P9A3191.jpg","Benny_K_pecas_0P9A3179.jpg","Benny_K_pecas_0P9A3178.jpg","Benny_K_pecas_0P9A3176.jpg","Benny_K_pecas_0P9A3175.jpg","Benny_K_pecas_0P9A3173.jpg","Benny_K_pecas_0P9A3172.jpg","Benny_K_pecas_0P9A3167.jpg","Benny_K_pecas_0P9A3160.jpg","Benny_K_pecas_0P9A3150.jpg","Benny_K_pecas_0P9A3140.jpg","Benny_K_pecas_0P9A3124.jpg","Benny_K_pecas_0P9A3123.jpg","Benny_K_pecas_0P9A3122.jpg","Benny_K_pecas_0P9A3121.jpg","Benny_K_pecas_0P9A3118.jpg","Benny_K_pecas_0P9A3117.jpg","Benny_K_pecas_0P9A3108.jpg","Benny_K_pecas_0P9A3107.jpg","Benny_K_pecas_0P9A3101.jpg","Benny_K_pecas_0P9A3100.jpg","Benny_K_pecas_0P9A3099.jpg","Benny_K_pecas_0P9A3098.jpg","Benny_K_pecas_0P9A3097.jpg","Benny_K_pecas_0P9A3092.jpg","Benny_K_pecas_0P9A3089.jpg","Benny_K_pecas_0P9A3087.jpg","Benny_K_pecas_IMG_8693.jpg","Benny_K_pecas_IMG_8688.jpg","Benny_K_pecas_IMG_8687.jpg","Benny_K_pecas_IMG_8684.jpg","Benny_K_pecas_IMG_8677.jpg","Benny_K_pecas_IMG_8676.jpg","Benny_K_pecas_IMG_8675.jpg","Benny_K_pecas_IMG_8673.jpg","Benny_K_pecas_IMG_8664.jpg","Benny_K_pecas_IMG_8661.jpg","Benny_K_pecas_IMG_8658.jpg","Benny_K_pecas_IMG_8657.jpg","Benny_K_pecas_IMG_8653.jpg","Benny_K_pecas_IMG_8652.jpg","Benny_K_pecas_IMG_8651.jpg","Benny_K_pecas_IMG_8638.jpg","Benny_K_pecas_IMG_8637.jpg","Benny_K_pecas_IMG_8633.jpg","Benny_K_pecas_IMG_8629.jpg","Benny_K_pecas_IMG_8621.jpg","Benny_K_pecas_IMG_8620.jpg","Benny_K_pecas_IMG_8618.jpg","Benny_K_pecas_IMG_8617.jpg","Benny_K_pecas_IMG_8610.jpg","Benny_K_pecas_IMG_8609.jpg","Benny_K_pecas_IMG_8608.jpg","Benny_K_pecas_IMG_8607.jpg","Benny_K_pecas_IMG_8605.jpg","Benny_K_pecas_IMG_8604.jpg","Benny_K_pecas_IMG_8601.jpg","Benny_K_pecas_IMG_7711.jpg","Benny_K_pecas_IMG_7707.jpg","Benny_K_pecas_IMG_7698.jpg","Benny_K_pecas_IMG_7695.jpg","Benny_K_pecas_IMG_7693.jpg","Benny_K_pecas_IMG_7691.jpg","Benny_K_pecas_IMG_7689.jpg","Benny_K_pecas_IMG_7686.jpg","Benny_K_pecas_IMG_7683.jpg","Benny_K_pecas_IMG_7681.jpg","Benny_K_pecas_IMG_7593.jpg","Benny_K_pecas_IMG_0173.jpg","Benny_K_pecas_IMG_0172.jpg","Benny_K_pecas_IMG_0170.jpg","Benny_K_pecas_IMG_0169.jpg","Benny_K_pecas_IMG_0155.jpg","Benny_K_pecas_IMG_0152.jpg","Benny_K_pecas_IMG_0144.jpg","Benny_K_pecas_IMG_0112.jpg","Benny_K_pecas_IMG_0104.jpg","Benny_K_pecas_IMG_0096.jpg","Benny_K_pecas_IMG_0095.jpg"];
-var PAGE_SIZE = 24;
+var PHOTOS = ["P9A3081.JPG","P9A3088.JPG","P9A3118.JPG","P9A3160.JPG","P9A3167.JPG","P9A3179.JPG","P9A3191.JPG","P9A3202.JPG","P9A3205.JPG","P9A3220.JPG","P9A3221.JPG","P9A3246.JPG","IMG_0029.jpg","IMG_0074.jpg","IMG_0082.jpg","IMG_0096.jpg","IMG_0104.jpg","IMG_0155.jpg","IMG_0170.jpg","IMG_0174.jpg","IMG_0183.jpg","IMG_7693.JPG","IMG_8601.JPG","IMG_8607.JPG","IMG_8617.JPG","IMG_8618.JPG","IMG_8633.jpg","IMG_8637.JPG","IMG_8652.JPG","IMG_8658.JPG","IMG_8661.JPG","IMG_8673.JPG","IMG_8675.JPG"];
+var CSV_URL = "https://docs.google.com/spreadsheets/d/1r2-Qz4aq40hDT1L-aCRApnrz0ndp7-SXHaoj0NhNp08/gviz/tq?tqx=out:csv";
+var DESCRICOES = {};
+var PAGE_SIZE = 33;
 var loaded = 0;
 var lightboxIndex = 0;
 var visiblePhotos = [];
@@ -204,6 +208,7 @@ function openLightbox(idx) {
   lightboxIndex = idx;
   document.getElementById('lb-img').src = 'uploads/' + PHOTOS[idx];
   document.getElementById('lb-counter').textContent = (idx + 1) + ' / ' + PHOTOS.length;
+  setCaption(idx);
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -219,6 +224,7 @@ function lightboxNav(dir) {
   if (lightboxIndex >= loaded) loadMore();
   document.getElementById('lb-img').src = 'uploads/' + PHOTOS[lightboxIndex];
   document.getElementById('lb-counter').textContent = (lightboxIndex + 1) + ' / ' + PHOTOS.length;
+  setCaption(lightboxIndex);
 }
 
 document.getElementById('lightbox').addEventListener('click', function(e) {
@@ -256,6 +262,44 @@ function setLang(lang) {
 
 // Init
 loadMore();
+
+function setCaption(idx) {
+  var el = document.getElementById('lb-caption');
+  if (el) el.textContent = DESCRICOES[PHOTOS[idx]] || '';
+}
+
+function parseCSV(text) {
+  var rows = [], row = [], field = '', q = false;
+  for (var i = 0; i < text.length; i++) {
+    var c = text[i];
+    if (q) {
+      if (c === '"' && text[i+1] === '"') { field += '"'; i++; }
+      else if (c === '"') q = false;
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ',') { row.push(field); field = ''; }
+    else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+    else if (c !== '\r') field += c;
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+function loadDescricoes() {
+  if (!CSV_URL) return;
+  fetch(CSV_URL).then(function(r){ return r.text(); }).then(function(txt){
+    var rows = parseCSV(txt);
+    for (var i = 1; i < rows.length; i++) {
+      var file = (rows[i][0] || '').trim();
+      var desc = (rows[i][1] || '').trim();
+      if (file) DESCRICOES[file] = desc;
+    }
+    var lb = document.getElementById('lightbox');
+    if (lb && lb.classList.contains('open')) setCaption(lightboxIndex);
+  }).catch(function(){});
+}
+loadDescricoes();
+
 </script>
 </body>
 </html>
