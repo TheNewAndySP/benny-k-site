@@ -483,5 +483,13 @@ function setLang(lang) {
   });
 }
 </script>
+<script>
+(function(){
+  var v = Date.now();
+  document.querySelectorAll('a[href^="lookbook.html"]').forEach(function(a){
+    a.href = 'lookbook.html?v=' + v;
+  });
+})();
+</script>
 </body>
 </html>
