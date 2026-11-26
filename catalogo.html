@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!--
+  CATALOGO BENNY.K
+  Esta pagina nao guarda copia do catalogo. Ela mostra, num iframe, o catalogo
+  que a Benny.K mantem no proprio sistema (https://links.bennyk.com.br/de/site).
+  Tudo o que mudar la aparece aqui sozinho. Nada nesta pagina precisa ser
+  editado para atualizar pecas, precos ou fotos.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo | Benny K Fine Jewelry</title>
+<meta name="description" content="O catálogo da Benny.K: alta joalheria, coleções e peças essenciais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://links.bennyk.com.br">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { background: #09090A; color: #F0EAE0; font-family: 'Montserrat', sans-serif; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #A8A8A0; }
+@keyframes menuSlideIn { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
+
+/* NAV (igual ao do site, sempre com fundo) */
+#nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:28px 64px; background:rgba(9,9,10,.97); border-bottom:1px solid rgba(168,168,160,.1); }
+.nav-links { display:flex; gap:44px; align-items:center; }
+.nav-links a { font-size:10px; letter-spacing:.4em; text-transform:uppercase; font-weight:400; transition:color .3s; }
+.nav-links a:hover { color:#A8A8A0; }
+.nav-links a.ativo { color:#A8A8A0; }
+.nav-logo { position:absolute; left:50%; transform:translateX(-50%); }
+.nav-logo img { height:48px; width:auto; object-fit:contain; display:block; }
+.lang-toggle { display:flex; gap:7px; align-items:center; margin-left:4px; }
+.lang-toggle button { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.3em; text-transform:uppercase; background:none; border:none; cursor:pointer; padding:4px 0; transition:color .3s; }
+.lang-toggle span { font-size:9px; color:rgba(240,234,224,.18); }
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:210; }
+.hamburger span { display:block; width:22px; height:1px; background:#F0EAE0; transition:all .3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+
+/* MENU MOBILE */
+#mobile-menu { display:none; position:fixed; inset:0; z-index:190; background:rgba(9,9,10,.98); flex-direction:column; align-items:center; justify-content:center; gap:44px; animation:menuSlideIn .35s ease; }
+#mobile-menu.open { display:flex; }
+#mobile-menu a { font-size:11px; letter-spacing:.55em; text-transform:uppercase; color:#F0EAE0; font-weight:300; transition:color .3s; }
+#mobile-menu a:hover { color:#A8A8A0; }
+
+/* CATALOGO */
+#quadro { position:fixed; top:105px; left:0; right:0; bottom:0; }
+#quadro iframe { width:100%; height:100%; border:0; display:block; background:#09090A; }
+.fallback { position:absolute; inset:0; display:none; align-items:center; justify-content:center; text-align:center; padding:40px; background:#09090A; }
+.fallback.visivel { display:flex; }
+.fallback p { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; color:#A8A8A0; line-height:1.7; }
+.fallback a { color:#F0EAE0; border-bottom:1px solid rgba(240,234,224,.4); }
+
+@media (max-width: 768px) {
+  #nav { padding:20px 24px; }
+  .nav-links { display:none; }
+  .nav-logo img { height:36px; }
+  .hamburger { display:flex; }
+  #quadro { top:77px; }
+}
+</style>
+
+<!-- Meta Pixel (o mesmo do site) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '902368429084770');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=902368429084770&ev=PageView&noscript=1"
+/></noscript>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-links">
+    <a href="index.html#colecoes" data-pt="Coleções" data-en="Collections">Coleções</a>
+    <a href="lookbook.html">Lookbook</a>
+    <a href="catalogo.html" class="ativo" aria-current="page" data-pt="Catálogo" data-en="Catalog">Catálogo</a>
+  </div>
+  <div class="nav-logo">
+    <a href="index.html"><img src="uploads/logo-benny-k-2026.svg" alt="Benny K Fine Jewelry"></a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#sobre" data-pt="Sobre" data-en="About">Sobre</a>
+    <a href="index.html#contato" data-pt="Contato" data-en="Contact">Contato</a>
+    <div class="lang-toggle">
+      <button type="button" id="btn-pt" onclick="setLang('pt')">PT</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+  <button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobile-menu">
+  <a href="index.html#colecoes" data-pt="Coleções" data-en="Collections">Coleções</a>
+  <a href="lookbook.html">Lookbook</a>
+  <a href="catalogo.html" onclick="closeMenu()" data-pt="Catálogo" data-en="Catalog">Catálogo</a>
+  <a href="index.html#sobre" data-pt="Sobre" data-en="About">Sobre</a>
+  <a href="index.html#contato" data-pt="Contato" data-en="Contact">Contato</a>
+  <div class="lang-toggle" style="margin-top:16px;">
+    <button type="button" id="mm-btn-pt" onclick="setLang('pt')">PT</button>
+    <span aria-hidden="true">|</span>
+    <button type="button" id="mm-btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<div id="quadro">
+  <iframe id="catalogo" src="https://links.bennyk.com.br/de/site"
+          title="Catálogo Benny K" loading="eager" allow="fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <div class="fallback" id="fallback">
+    <p><span data-pt="O catálogo está demorando a abrir." data-en="The catalog is taking a while to open.">O catálogo está demorando a abrir.</span><br>
+      <a href="https://links.bennyk.com.br/de/site" target="_blank" rel="noopener" data-pt="Abrir o catálogo numa aba nova" data-en="Open the catalog in a new tab">Abrir o catálogo numa aba nova</a></p>
+  </div>
+</div>
+
+<script>
+// Menu mobile
+function toggleMenu() {
+  var open = document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open', open);
+}
+function closeMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// Idioma (só o menu e o aviso; o catálogo tem o idioma dele)
+function setLang(lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+  document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  ['btn-pt','btn-en','mm-btn-pt','mm-btn-en'].forEach(function(id) {
+    var btn = document.getElementById(id), on = id.indexOf(lang) !== -1;
+    btn.style.color = on ? '#A8A8A0' : 'rgba(240,234,224,.4)';
+    btn.style.fontWeight = on ? '500' : '300';
+  });
+}
+setLang('pt');
+
+// Altura do menu: o catálogo começa logo abaixo dele, em qualquer tela
+function ajustaQuadro() {
+  document.getElementById('quadro').style.top = document.getElementById('nav').offsetHeight + 'px';
+}
+window.addEventListener('resize', ajustaQuadro);
+window.addEventListener('load', ajustaQuadro);
+ajustaQuadro();
+
+// Se o catálogo não abrir em 12 s, mostra o link para abrir numa aba.
+// Opcional, do lado do sistema do catálogo: se ele enviar
+//   parent.postMessage('bennyk:catalogo-ok', '*')
+// ao abrir, basta trocar ESPERAR_SINAL para true: a página passa a esperar esse sinal
+// em vez do "load" do navegador,
+// que também dispara quando o catálogo é bloqueado. Assim o aviso aparece sempre que precisar.
+var fallback = document.getElementById('fallback');
+var timer = setTimeout(function(){ fallback.classList.add('visivel'); }, 12000);
+var ESPERAR_SINAL = false; // trocar para true quando o sistema do catálogo enviar o sinal
+document.getElementById('catalogo').addEventListener('load', function(){
+  if (!ESPERAR_SINAL) clearTimeout(timer);
+});
+window.addEventListener('message', function(e) {
+  if (e.origin !== 'https://links.bennyk.com.br' || e.data !== 'bennyk:catalogo-ok') return;
+  clearTimeout(timer);
+  fallback.classList.remove('visivel');
+});
+</script>
+
+</body>
+</html>
